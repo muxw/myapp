@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title></title>
+</head>
+<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+	}
+.test{
+	width: 100px;
+}
+.test-enter-active{
+	animation:bounce-in .5s;
+}
+.test-leave-active{
+	animation: bounce-out .5s;
+}
+@keyframes bounce-in{
+	0% {
+		transform:scale(0);
+	}
+	50%{
+		transform: scale(1.5);
+	}
+	100%{
+		transform:scale(1);
+	}
+}
+@keyframes bounce-out {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+.mxw{
+	display: block;
+	width: 100px;
+	height: 100px;
+	background: #000;
+	color:red;
+	transition: all 3s;
+}
+.mxw:hover{
+	color:#000;
+	transform: rotate(180deg);
+	background: red;
+}
+</style>
+<body>
+<div class="mxw">45645465</div>
+	<div id='app'>
+		<button v-html='message' @click='change'></button>
+		<transition
+		@before-enter='con(1)'
+		@enter='con(2)'
+		@before-after-enter='con(3)'
+		@before-enter-cancelled=con(4)
+		@before-leave = 'con(5)'
+		@leave = 'con(6)'
+		@after-leave = 'con(7)'
+		@leave-cancelled='add(8)'
+		 name='test'>
+			<div v-if='ok'>hello</div>
+		</transition>
+	</div>
+
+	<script type="text/javascript" src='node_modules/vue/dist/vue.js'></script>
+	<script type="text/javascript">
+		var data = {
+			num:0,
+			something:'123',
+			message:'231',
+			ok:true
+		};
+		var method = {	
+			change:function(){
+				this.ok = !this.ok;
+			},
+			con:function(n){
+				console.log(n);
+			}
+		};
+		var com = {
+			template:'<div><slot text="hello from"></slot><slot></slot>4565<slot name="foot"></slot></div>',
+			props:{
+				
+			},
+			data:function(){
+				return {
+					
+				}
+			},
+
+			methods:method,
+		}
+		var app = new Vue({
+			el:'#app',
+			data:data,
+			methods:method,
+			components:{
+				"com":com
+			}
+		})
+		
+	</script>
+
+</body>
+</html>
