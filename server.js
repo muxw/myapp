@@ -4,7 +4,7 @@ app.use(express.static('public'));
 app.get('/',function(req,res){
   res.sendFile('index.html')
 })
-app.listen('8080',function(err){
+app.listen('3000',function(err){
   if(err){
     return
   }
