@@ -17,8 +17,8 @@
 		<header><img src="./image/headShare.png"></header>
 		<div class="content">
 			<ul>
-				<li><img src="./testimg/1.png"></li>
-				<li><img src="./testimg/2.png"></li>
+<!-- 				<li><img src="./testimg/1.png"></li>
+<li><img src="./testimg/2.png"></li> -->
 			</ul>
 		</div>
 		<div class="share"><img src='./image/share.png'></div>
@@ -27,4 +27,27 @@
 		<h1>VRfamily科技馆</h1>
 		<h2>地址:苏州新区玉山路乐购超市一楼</h2>
 	</body>
+	<script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.js"></script>
+	<script type="text/javascript">
+		(function(){
+			$.ajax({
+				url:'/data',
+				type:'get',
+				dataType:'json',
+				success: function(msg){
+					if(msg.err){
+						return;
+					}else{
+						var length = msg.data.length;
+						var str = '';
+						for(var i = 0 ;i<length;i++){
+							str += '<li><img src="'+msg.data[i].img+'"></li>'
+						}
+						$('ul').append(str);
+					}
+				}
+			})
+		})()
+
+	</script>
 <html>
