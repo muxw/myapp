@@ -4,7 +4,6 @@ app.use(express.static('public'));
 app.get('/',function(req,res){
   res.sendFile('index.html')
 })
-<<<<<<< HEAD
 app.get('/data',function(req,res){
   res.json({
     err:0,
@@ -15,10 +14,7 @@ app.get('/data',function(req,res){
     ]
   })
 })
-app.listen('8080',function(err){
-=======
 app.listen('80',function(err){
->>>>>>> ab8de0b20fc7de68cb5ca15c18543ffcb19fb1ca
   if(err){
     return
   }
