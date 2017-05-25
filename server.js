@@ -1,9 +1,13 @@
 const express = require('express');
+const superagent = require('superagent');
+const http =  require('superagent')
 let app = express();
 app.use(express.static('public'));
 app.get('/',function(req,res){
   res.sendFile('index.html')
 })
+let key = '1309DB1889014394F50D6775808A950B';
+let account = '136791661';
 app.get('/data',function(req,res){
   res.json({
     err:0,
@@ -14,7 +18,20 @@ app.get('/data',function(req,res){
     ]
   })
 })
-app.listen('80',function(err){
+app.get('/hero',function(req,res){
+  superagent
+    .get('http://api.steampowered.com/IEconDOTA2_570/GetHeroes/v1')
+    .query('language=zh_CN')
+    .query(`key=${key}`)
+    .end(function(err,msg){
+      if(err){
+        console.log(err)
+        return
+      }
+      res.json(msg.body)
+    })
+})
+app.listen('3000',function(err){
   if(err){
     return
   }
