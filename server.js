@@ -23,7 +23,7 @@ app.post('/wechat', function (req, res) {
   console.log(req.body);
   let openId = req.body.xml.tousername[0];
   let myid = req.body.xml.fromusername[0];
-  let time = new Date().getTime();
+  let time = parseInt(new Date().getTime()/1000);
   let msg = `
   <xml>
   <ToUserName><![CDATA[${openId}]]></ToUserName>
@@ -32,6 +32,7 @@ app.post('/wechat', function (req, res) {
   <MsgType><![CDATA[text]]></MsgType>
   <Content><![CDATA[你好]]></Content>
   </xml>`;
+  console.log(msg);
   res.writeHead(200,{'Content-Type':'application/xml'})
   res.end(msg);
 })
