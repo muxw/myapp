@@ -19,7 +19,7 @@ app.get('/wechat', (req,res) =>{
 app.get('/api/data',function(req,res){
   res.json(hero)
 })
-app.post('/chat',function(req,res){
+app.post('/wechat',function(req,res){
   console.log(req.body);
   res.send("321")
 })
