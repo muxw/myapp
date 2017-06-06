@@ -24,15 +24,16 @@ app.post('/wechat', function (req, res) {
   let openId = req.body.xml.tousername[0];
   let myid = req.body.xml.fromusername[0];
   let time = new Date().getTime();
-  console.log(openId,myid)
-  res.send(`
+  let msg = `
   <xml>
   <ToUserName><![CDATA[${openId}]]></ToUserName>
   <FromUserName><![CDATA[myid]]></FromUserName>
   <CreateTime>${time}</CreateTime>
   <MsgType><![CDATA[text]]></MsgType>
   <Content><![CDATA[你好]]></Content>
-  </xml>`)
+  </xml>`
+  res.writeHead(200,{'Content-Type':'application/xml'})
+  res.send(msg);
 })
 let key = '1309DB1889014394F50D6775808A950B';
 let account = '136791661';
