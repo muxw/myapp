@@ -22,11 +22,11 @@ app.get('/api/data',function(req,res){
 app.post('/wechat',function(req,res){
   console.log(req.body);
   let openId = req.body.xml.tousername[0];
-  let time = new Date.getTime();
+  let time = new Date().getTime();
   res.send(`<xml>
 <ToUserName><![CDATA[${openId}]]></ToUserName>
 <FromUserName><![CDATA[oKuUSwH3uJ069brOZRnPRYbosc6g]]></FromUserName>
-<CreateTime>12345678</CreateTime>
+<CreateTime>${time}</CreateTime>
 <MsgType><![CDATA[text]]></MsgType>
 <Content><![CDATA[你好]]></Content>
 </xml>`)
