@@ -14,7 +14,10 @@ app.get('/wechat', (req,res) =>{
 app.get('/api/data',function(req,res){
   res.json(hero)
 })
-
+app.post('/chat',function(req,res){
+  console.log(req.query);
+  res.send("321")
+})
 let key = '1309DB1889014394F50D6775808A950B';
 let account = '136791661';
 app.listen('80', function (err) {
