@@ -21,17 +21,16 @@ app.get('/api/data', function (req, res) {
 })
 app.post('/wechat', function (req, res) {
   console.log(req.body);
-  let openId = req.body.xml.tousername;
-  let myid = req.body.xml.fromusername;
+  let data = req.body.xml
   let time = new Date().getTime();
-  let msg = `
-  <xml>
-  <ToUserName><![CDATA[${openId}]]></ToUserName>
-  <FromUserName><![CDATA[${myid}]]></FromUserName>
-  <CreateTime>${time}</CreateTime>
-  <MsgType><![CDATA[text]]></MsgType>
-  <Content><![CDATA[你好]]></Content>
-  </xml>`;
+  var resMsg = '<xml>' +
+    '<ToUserName><![CDATA[' + data.fromusername + ']]></ToUserName>' +
+    '<FromUserName><![CDATA[' + data.tousername + ']]></FromUserName>' +
+    '<CreateTime>' + new Date().getTime() + '</CreateTime>' +
+    '<MsgType><![CDATA[text]]></MsgType>' +
+    '<Content><![CDATA['+data.content+']]></Content>' +
+    '</xml>';
+  console.log(resMsg)
   res.writeHead(200,{"Content-Type":"application/xml"})
   res.end(msg);
 })
