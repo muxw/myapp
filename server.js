@@ -27,7 +27,7 @@ app.post('/wechat', function (req, res) {
   let msg = `
   <xml>
   <ToUserName><![CDATA[${openId}]]></ToUserName>
-  <FromUserName><![CDATA[myid]]></FromUserName>
+  <FromUserName><![CDATA[${myid}]]></FromUserName>
   <CreateTime>${time}</CreateTime>
   <MsgType><![CDATA[text]]></MsgType>
   <Content><![CDATA[你好]]></Content>
