@@ -20,21 +20,17 @@ app.get('/api/data', function (req, res) {
   res.json(hero)
 })
 app.post('/wechat', function (req, res) {
-  console.log(req.body);
-  let openId = req.body.xml.tousername[0];
-  let myid = req.body.xml.fromusername[0];
-  let time = parseInt(new Date().getTime()/1000);
-  let msg = `
-  <xml>
-  <ToUserName><![CDATA[${openId}]]></ToUserName>
-  <FromUserName><![CDATA[${myid}]]></FromUserName>
-  <CreateTime>${time}</CreateTime>
-  <MsgType><![CDATA[text]]></MsgType>
-  <Content><![CDATA[你好]]></Content>
-  </xml>`;
-  console.log(msg);
-  res.writeHead(200,{'Content-Type':'application/xml'})
-  res.end(msg);
+  res.writeHead(200, {'Content-Type': 'application/xml'});
+
+  var data = req.body.xml;
+  var resMsg = '<xml>' +
+    '<ToUserName><![CDATA[' + data.fromusername + ']]></ToUserName>' +
+    '<FromUserName><![CDATA[' + data.tousername + ']]></FromUserName>' +
+    '<CreateTime>' + parseInt(new Date().valueOf() / 1000) + '</CreateTime>' +
+    '<MsgType><![CDATA[text]]></MsgType>' +
+    '<Content><![CDATA['+data.content+']]></Content>' +
+    '</xml>';
+  res.end(resMsg);
 })
 let key = '1309DB1889014394F50D6775808A950B';
 let account = '136791661';
