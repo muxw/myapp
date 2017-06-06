@@ -3,7 +3,12 @@ const http = require('superagent');
 const fs = require('fs');
 const cheerio = require('cheerio');
 const hero = require('./test.json');
+const bodyParser = require('body-parser')
+const xmlParser = require('express-xml-bodyparser');
 let app = express();
+app.use(xmlParser());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 app.use(express.static('public'));
 app.get('/', function (req, res) {
   res.sendFile('index.html')
