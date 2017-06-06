@@ -32,7 +32,7 @@ app.post('/wechat', function (req, res) {
     '</xml>';
   console.log(resMsg)
   res.writeHead(200,{"Content-Type":"application/xml"})
-  res.end(msg);
+  res.end(resMsg);
 })
 let key = '1309DB1889014394F50D6775808A950B';
 let account = '136791661';
