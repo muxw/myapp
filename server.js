@@ -31,9 +31,9 @@ app.post('/wechat', function (req, res) {
   <CreateTime>${time}</CreateTime>
   <MsgType><![CDATA[text]]></MsgType>
   <Content><![CDATA[你好]]></Content>
-  </xml>`
+  </xml>`;
   res.writeHead(200,{'Content-Type':'application/xml'})
-  res.send(msg);
+  res.end(msg);
 })
 let key = '1309DB1889014394F50D6775808A950B';
 let account = '136791661';
