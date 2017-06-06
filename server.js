@@ -21,7 +21,13 @@ app.get('/api/data',function(req,res){
 })
 app.post('/wechat',function(req,res){
   console.log(req.body);
-  res.send("321")
+  res.send("<xml>
+<ToUserName><![CDATA[toUser]]></ToUserName>
+<FromUserName><![CDATA[fromUser]]></FromUserName>
+<CreateTime>12345678</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[你好]]></Content>
+</xml>")
 })
 let key = '1309DB1889014394F50D6775808A950B';
 let account = '136791661';
