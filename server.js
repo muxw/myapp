@@ -15,7 +15,7 @@ app.get('/api/data',function(req,res){
   res.json(hero)
 })
 app.post('/chat',function(req,res){
-  console.log(req.query);
+  console.log(req.body);
   res.send("321")
 })
 let key = '1309DB1889014394F50D6775808A950B';
