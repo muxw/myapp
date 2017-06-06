@@ -7,29 +7,32 @@ const bodyParser = require('body-parser')
 const xmlParser = require('express-xml-bodyparser');
 let app = express();
 app.use(xmlParser());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.get('/', function (req, res) {
   res.sendFile('index.html')
 })
-app.get('/wechat', (req,res) =>{
+app.get('/wechat', (req, res) => {
   res.send(req.query.echostr)
 })
-app.get('/api/data',function(req,res){
+app.get('/api/data', function (req, res) {
   res.json(hero)
 })
-app.post('/wechat',function(req,res){
+app.post('/wechat', function (req, res) {
   console.log(req.body);
   let openId = req.body.xml.tousername[0];
+  let myid = req.body.xml.fromusername[0];
   let time = new Date().getTime();
-  res.send(`<xml>
-<ToUserName><![CDATA[${openId}]]></ToUserName>
-<FromUserName><![CDATA[oKuUSwH3uJ069brOZRnPRYbosc6g]]></FromUserName>
-<CreateTime>${time}</CreateTime>
-<MsgType><![CDATA[text]]></MsgType>
-<Content><![CDATA[你好]]></Content>
-</xml>`)
+  console.log(openId,myid)
+  res.send(`
+  <xml>
+  <ToUserName><![CDATA[${openId}]]></ToUserName>
+  <FromUserName><![CDATA[oKuUSwH3uJ069brOZRnPRYbosc6g]]></FromUserName>
+  <CreateTime>${time}</CreateTime>
+  <MsgType><![CDATA[text]]></MsgType>
+  <Content><![CDATA[你好]]></Content>
+  </xml>`)
 })
 let key = '1309DB1889014394F50D6775808A950B';
 let account = '136791661';
