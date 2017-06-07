@@ -21,7 +21,7 @@ app.use(express.static('public'));
 app.use('/api', routes);
 app.use('/wechat',wechat);
 app.get('/',(req,res) => {
-  res.location('home')
+  res.redirect('/home');
 })
 app.listen('80', function (err) {
   if (err) {
