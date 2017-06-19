@@ -7,7 +7,6 @@ const bodyParser = require('body-parser')
 const xmlParser = require('express-xml-bodyparser');
 const routes = require('./router/index');
 const wechat = require('./router/wechat')
-
 let app = express();
 
 //设置post收内容
