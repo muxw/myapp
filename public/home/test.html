@@ -14,7 +14,8 @@
 </body>
 <script src="http://files.cnblogs.com/files/mofish/sha1.js"></script>
 <script>
-    function randomString(len) {
+    window.onload = function(){
+        function randomString(len) {
         len = len || 12;
         var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
         var maxPos = $chars.length;
@@ -55,7 +56,18 @@
                 // 用户取消分享后执行的回调函数
             }
         });
-
+        wx.onMenuShareTimeline({
+    title: '213', // 分享标题
+    link: 'http://www.mulyou.me/home/test.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+    imgUrl: '/image/1.jpg', // 分享图标
+    success: function () { 
+        alert('成功')
+    },
+    cancel: function () { 
+        // 用户取消分享后执行的回调函数
+    }
+});
+    }
 </script>
 
 </html>
