@@ -16,4 +16,7 @@ router.post('/', function (req, res) {
   res.writeHead(200,{"Content-Type":"application/xml"})
   res.end(resMsg);
 })
+router.get('/token', (req,res) => {
+  res.send(req.query.echostr)
+})
 module.exports = router;
