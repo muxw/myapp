@@ -25,9 +25,10 @@
         }
         return pwd;
     }
-    var time = new Date().getTime()
+    var time = Math.floor((new Date().getTime())/1000)
     var str = randomString()
     var getStr = function (str) {
+        console.log("jsapi_ticket=HoagFKDcsGMVCIY2vOjf9r-TjxnBXt0duRt6vu4Ga7HPMPlIVNav6FfYZH-5RDeFPanaemRm3Wpm5HNag-bDMg&noncestr=" + str + "&timestamp=" + time + "&url=http://www.mulyou.me/home/test.html");
         return hex_sha1("jsapi_ticket=HoagFKDcsGMVCIY2vOjf9r-TjxnBXt0duRt6vu4Ga7HPMPlIVNav6FfYZH-5RDeFPanaemRm3Wpm5HNag-bDMg&noncestr=" + str + "&timestamp=" + time + "&url=http://www.mulyou.me/home/test.html")
     }
     wx.config({
