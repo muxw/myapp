@@ -12,7 +12,7 @@
 <body>
     <button onclick="share()"> 4564</button>
 </body>
-<script src="http://files.cnblogs.com/files/mofish/sha1.js"></script>
+<script src="/common/js/sha1.js"></script>
 <script>
     function randomString(len) {
         len = len || 12;
@@ -76,9 +76,42 @@
         }
     });
     wx.ready(function () {
-        console.log(123)
+        wx.onMenuShareTimeline({
+            title: '标题', // 分享标题
+            link: 'http://www.mulyou.me/home/test.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: '/image/1.png', // 分享图标
+            success: function () {
+                alert('成功啦')
+            },
+            cancel: function () {
+                alert("取消啦")
+            }
+        });
+        wx.onMenuShareQQ({
+            title: '标题', // 分享标题
+            link: 'http://www.mulyou.me/home/test.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: '/image/1.png', // 分享图标
+            success: function () {
+                alert('成功啦')
+            },
+            cancel: function () {
+                alert("取消啦")
+            }
+        });
+        wx.onMenuShareAppMessage({
+            title: '标题', // 分享标题
+            link: 'http://www.mulyou.me/home/test.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: '/image/1.png', // 分享图标
+            success: function () {
+                alert('成功啦')
+            },
+            cancel: function () {
+                alert("取消啦")
+            }
+        });
     })
-    wx.error(function(){alert('config失败')})
+    wx.error(function () { alert('config失败') })
+
 </script>
 
 </html>
