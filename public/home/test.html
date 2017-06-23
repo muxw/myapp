@@ -28,7 +28,7 @@
     var time = new Date().getTime()
     var str = randomString()
     var getStr = function (str) {
-        return hex_sha1("jsapi_ticket=HoagFKDcsGMVCIY2vOjf9r-TjxnBXt0duRt6vu4Ga7HPMPlIVNav6FfYZH-5RDeFPanaemRm3Wpm5HNag-bDMg&noncestr=" + str + "&timestamp=" + time + "&url=http://www.mulyou.me/home/test.html")
+        return hex_sha1("jsapi_ticket=HoagFKDcsGMVCIY2vOjf9r-TjxnBXt0duRt6vu4Ga7HPMPlIVNav6FfYZH-5RDeFPanaemRm3Wpm5HNag-bDMg&nonceStr=" + str + "&timestamp=" + time + "&url=http://www.mulyou.me/home/test.html")
     }
     wx.config({
         debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
