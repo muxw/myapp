@@ -28,7 +28,7 @@
     var time = new Date().getTime()
     var str = randomString()
     var getStr = function (str) {
-        return hex_sha1("jsapi_ticket=HoagFKDcsGMVCIY2vOjf9r-TjxnBXt0duRt6vu4Ga7HPMPlIVNav6FfYZH-5RDeFPanaemRm3Wpm5HNag-bDMg&nonceStr=" + str + "&timestamp=" + time + "&url=http://www.mulyou.me/home/test.html")
+        return hex_sha1("jsapi_ticket=HoagFKDcsGMVCIY2vOjf9r-TjxnBXt0duRt6vu4Ga7HPMPlIVNav6FfYZH-5RDeFPanaemRm3Wpm5HNag-bDMg&noncestr=" + str + "&timestamp=" + time + "&url=http://www.mulyou.me/home/test.html")
     }
     wx.config({
         debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -80,7 +80,7 @@
         wx.onMenuShareTimeline({
             title: '标题啊啊啊', // 分享标题
             link: 'http://www.mulyou.me/home/test.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-            imgUrl: '/image/1.jpg', // 分享图标
+            imgUrl: '/image/dota.jpg', // 分享图标
             success: function () {
                 alert('成功啦')
             },
@@ -91,7 +91,7 @@
         wx.onMenuShareQQ({
             title: '标题啊啊啊', // 分享标题
             link: 'http://www.mulyou.me/home/test.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-            imgUrl: '/image/1.jpg', // 分享图标
+            imgUrl: '/image/dota.jpg', // 分享图标
             success: function () {
                 alert('成功啦')
             },
@@ -102,7 +102,7 @@
         wx.onMenuShareAppMessage({
             title: '标题啊啊啊', // 分享标题
             link: 'http://www.mulyou.me/home/test.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-            imgUrl: '/image/1.jpg', // 分享图标
+            imgUrl: '/image/dota.jpg', // 分享图标
             success: function () {
                 alert('成功啦')
             },
