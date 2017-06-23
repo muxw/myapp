@@ -24,15 +24,15 @@
         }
         return pwd;
     }
-
-    var str = randomString(6)
+    var time = new Date().getTime()
+    var str = randomString()
     var getStr = function (str) {
-        return hex_sha1("jsapi_ticket=HoagFKDcsGMVCIY2vOjf9r-TjxnBXt0duRt6vu4Ga7HnSJ2SONtaZ5YAheqAay_2Xo3XzDDPHTuODotbbjovwQ&nocestr=noncestr=" + str + "&timestamp=" + new Date().getTime() + "&url=http://www.mulyou.me/home/test.html")
+        return hex_sha1("jsapi_ticket=HoagFKDcsGMVCIY2vOjf9r-TjxnBXt0duRt6vu4Ga7HPMPlIVNav6FfYZH-5RDeFPanaemRm3Wpm5HNag-bDMg&noncestr=" + str + "&timestamp=" + time + "&url=http://www.mulyou.me/home/test.html")
     }
     wx.config({
         debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
         appId: 'wx348f0d2e74c5d045', // 必填，公众号的唯一标识
-        timestamp: new Date().getTime(), // 必填，生成签名的时间戳
+        timestamp: time, // 必填，生成签名的时间戳
         nonceStr: str, // 必填，生成签名的随机串
         signature: getStr(str),// 必填，签名，见附录1
         jsApiList: [
