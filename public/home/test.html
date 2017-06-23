@@ -35,27 +35,69 @@
         timestamp: new Date().getTime(), // 必填，生成签名的时间戳
         nonceStr: str, // 必填，生成签名的随机串
         signature: getStr(str),// 必填，签名，见附录1
-        jsApiList: ["onMenuShareTimeline", "onMenuShareAppMessage", "onMenuShareQQ"],// 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        jsApiList: [
+            'checkJsApi',
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo',
+            'hideMenuItems',
+            'showMenuItems',
+            'hideAllNonBaseMenuItem',
+            'showAllNonBaseMenuItem',
+            'translateVoice',
+            'startRecord',
+            'stopRecord',
+            'onRecordEnd',
+            'playVoice',
+            'pauseVoice',
+            'stopVoice',
+            'uploadVoice',
+            'downloadVoice',
+            'chooseImage',
+            'previewImage',
+            'uploadImage',
+            'downloadImage',
+            'getNetworkType',
+            'openLocation',
+            'getLocation',
+            'hideOptionMenu',
+            'showOptionMenu',
+            'closeWindow',
+            'scanQRCode',
+            'chooseWXPay',
+            'openProductSpecificView',
+            'addCard',
+            'chooseCard',
+            'openCard'
+        ],// 必填，需要使用的JS接口列表，所有JS接口列表见附录2
         success() {
-            console.log('shibai')
+            console.log('success')
         }
     });
     wx.ready(function () {
-        wx.onMenuShareAppMessage({
-            title: '321', // 分享标题
-            desc: '321321', // 分享描述
-            link: 'http://www.mulyou.me/home/test.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-            imgUrl: '/image/1.jpg', // 分享图标
-            type: '', // 分享类型,music、video或link，不填默认为link
-            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-            success: function () {
-                alert('success')
-            },
-            cancel: function () {
-                alert('取消')
-            }
-        });
+        console.log(45645)
+        document.getElementsByTagName('button')[0].onclick = function () {
+            wx.onMenuShareAppMessage({
+                title: '321', // 分享标题
+                desc: '321321', // 分享描述
+                link: 'http://www.mulyou.me/home/test.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: '/image/1.jpg', // 分享图标
+                type: '', // 分享类型,music、video或link，不填默认为link
+                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function () {
+                    alert('success')
+                },
+                cancel: function () {
+                    alert('取消')
+                }
+            });
+
+        }
+
+        console.log(123)
     })
+    wx.error(function () { alert('config失败') })
 
 </script>
 
