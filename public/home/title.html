@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>科室</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="/common/css/reset.css" rel="stylesheet">
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		body,html{
+			height: 100%;
+		}
+		.container {
+			width: 100%;
+			height: 800px;;
+			position: relative;
+			padding-top: 40px;
+		}
+
+		.department {
+			margin: 0 auto;
+			border-bottom: 1px dashed #ddd;
+			padding: 20px;
+			width: 808px;
+			padding-bottom: 0;
+		}
+
+		.department h5 {
+			display: inline-block;
+			width: 140px;
+			vertical-align: top;
+			font-size: 17px;
+			font-weight: bolder;
+			margin-right: 50px;
+		}
+
+		.department ul {
+			display: inline-block;
+			vertical-align: top;
+			width: 548px;
+			font-size: 0;
+		}
+
+		.department ul li {
+			display: inline-block;
+			width: 33.3%;
+			font-size: 14px;
+			margin-bottom: 20px;
+			text-align: left;
+			letter-spacing: 1px;
+		}
+
+		.department ul li a:hover,
+		.department ul li a:active {
+			text-decoration: underline;
+		}
+
+		.department .pop {
+			cursor: pointer;
+		}
+
+		.container .order {
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 658px;
+			width: 100%;
+		}
+		.goBack{
+			display: none;
+			position: absolute;
+			top:-40px;
+			right:40px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="banner">
+			<iframe src="http://localhost:8080/payplatform/btst/order.html?deptCode=0607" class="order"></iframe>
+			<button class="goBack">返回</button>
+		</div>
+	</div>
+</body>
+<script src="/common/js/jquery.min.js"></script>
+<script>
+	$.ajax({
+		url: '/register-payplatform/rest/register/depinfo',
+		type: "get",
+		datatype: "json",
+		success: function (msg) {
+			if (msg.msg != "success") {
+				return;
+			}
+			var data = msg.data;
+			var str = '';
+			var num = 0;
+			for (var i in data) {
+				str += '<div class="department">';
+				var len = data[i].length
+				str += "<h5>" + data[i][0].parentDeptName + "</h5>";
+				str += "<ul>";
+
+				for (var j in data[i]) {
+					str += "<li><a class='pop' name='" + data[i][j].deptCode + "'>" + data[i][j].deptName + "</a></li>"
+				}
+				str += "</ul></div>"
+			}
+			$('.container').append(str)
+			$('.pop').on('click', function () {
+				var id = $(this).attr('name');
+				console.log($(this).attr("name"))
+				$('.container').css({'overflow':'hidden'})
+				$('.order').attr({'src':'http://localhost:8080/payplatform/btst/order.html?deptCode=0607'})
+				$('.order').show();
+				$('.goBack').show();
+			})
+			$('.goBack').on('click',function(){
+				$(this).hide();
+				$('.order').hide();
+			});
+		},
+		err: function () {
+			alert("网络出错")
+		}
+	})
+
+</script>
+
+</html>

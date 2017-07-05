@@ -1,0 +1,181 @@
+{
+    "msg": "success",
+    "code": 0,
+    "data": [
+        {
+            "doctorInfo": {
+                "deptCode": "0607",
+                "deptName": "内分泌科（高级50）",
+                "doctorCode": "01419",
+                "doctorIntrodution": "主任医师",
+                "doctorName": "王旭",
+                "doctorsKill": "",
+                "parentDeptCode": "6005",
+                "parentDeptName": "内分泌科"
+            },
+            "pbiNfo": {
+                "27-6 -28": {
+                    "am": [
+                        {
+                            "beginTime": "09:00:00",
+                            "deptCode": "0607",
+                            "doctorCode": "01419",
+                            "endTime": "10:00:00",
+                            "hisOrdNum": "4098310",
+                            "leftNum": "0",
+                            "regFee": "50",
+                            "scheduleDate": "27-6� -17",
+                            "timeFlag": "1",
+                            "totalNum": "25",
+                            "workStatus": "1"
+                        },
+                        {
+                            "beginTime": "08:00:00",
+                            "deptCode": "0607",
+                            "doctorCode": "01419",
+                            "endTime": "09:00:00",
+                            "hisOrdNum": "4098285",
+                            "leftNum": "0",
+                            "regFee": "50",
+                            "scheduleDate": "27-6� -17",
+                            "timeFlag": "1",
+                            "totalNum": "25",
+                            "workStatus": "1"
+                        }
+                    ],
+                    "pm": [
+                        {
+                            "beginTime": "15:00:00",
+                            "deptCode": "0607",
+                            "doctorCode": "01419",
+                            "endTime": "16:00:00",
+                            "hisOrdNum": "4098351",
+                            "leftNum": "0",
+                            "regFee": "50",
+                            "scheduleDate": "27-6� -17",
+                            "timeFlag": "2",
+                            "totalNum": "16",
+                            "workStatus": "1"
+                        },
+                        {
+                            "beginTime": "16:00:00",
+                            "deptCode": "0607",
+                            "doctorCode": "01419",
+                            "endTime": "17:00:00",
+                            "hisOrdNum": "4098367",
+                            "leftNum": "0",
+                            "regFee": "50",
+                            "scheduleDate": "27-6� -17",
+                            "timeFlag": "2",
+                            "totalNum": "8",
+                            "workStatus": "1"
+                        },
+                        {
+                            "beginTime": "14:00:00",
+                            "deptCode": "0607",
+                            "doctorCode": "01419",
+                            "endTime": "15:00:00",
+                            "hisOrdNum": "4098335",
+                            "leftNum": "0",
+                            "regFee": "50",
+                            "scheduleDate": "27-6� -17",
+                            "timeFlag": "2",
+                            "totalNum": "16",
+                            "workStatus": "1"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "doctorInfo": {
+                "deptCode": "0607",
+                "deptName": "内分泌科（高级50）",
+                "doctorCode": "01402",
+                "doctorIntrodution": "主任医师",
+                "doctorName": "戴芳芳",
+                "doctorsKill": "",
+                "parentDeptCode": "6005",
+                "parentDeptName": "内分泌科"
+            },
+            "pbiNfo": {
+                "27-6 -29": {
+                    "am": [
+                        {
+                            "beginTime": "08:00:00",
+                            "deptCode": "0607",
+                            "doctorCode": "01402",
+                            "endTime": "09:00:00",
+                            "hisOrdNum": "4098249",
+                            "leftNum": "0",
+                            "regFee": "50",
+                            "scheduleDate": "27-6� -17",
+                            "timeFlag": "1",
+                            "totalNum": "18",
+                            "workStatus": "1"
+                        },
+                        {
+                            "beginTime": "09:00:00",
+                            "deptCode": "0607",
+                            "doctorCode": "01402",
+                            "endTime": "10:00:00",
+                            "hisOrdNum": "4098267",
+                            "leftNum": "0",
+                            "regFee": "50",
+                            "scheduleDate": "27-6� -17",
+                            "timeFlag": "1",
+                            "totalNum": "18",
+                            "workStatus": "1"
+                        }
+                    ],
+                    "pm": []
+                }
+            }
+        },
+        {
+            "doctorInfo": {
+                "deptCode": "0708",
+                "deptName": "风湿病科(高级50）",
+                "doctorCode": "28209",
+                "doctorIntrodution": "主任医师",
+                "doctorName": "汪悦",
+                "doctorsKill": "",
+                "parentDeptCode": "6009",
+                "parentDeptName": "风湿病科"
+            },
+            "pbiNfo": {
+                "27-6� -17": {
+                    "am": [
+                        {
+                            "beginTime": "09:00:00",
+                            "deptCode": "0607",
+                            "doctorCode": "28209",
+                            "endTime": "10:00:00",
+                            "hisOrdNum": "4098400",
+                            "leftNum": "0",
+                            "regFee": "50",
+                            "scheduleDate": "27-6� -17",
+                            "timeFlag": "1",
+                            "totalNum": "25",
+                            "workStatus": "1"
+                        },
+                        {
+                            "beginTime": "08:00:00",
+                            "deptCode": "0607",
+                            "doctorCode": "28209",
+                            "endTime": "09:00:00",
+                            "hisOrdNum": "4098375",
+                            "leftNum": "0",
+                            "regFee": "50",
+                            "scheduleDate": "27-6� -17",
+                            "timeFlag": "1",
+                            "totalNum": "25",
+                            "workStatus": "1"
+                        }
+                    ],
+                    "pm": []
+                }
+            }
+        }
+    ]
+}

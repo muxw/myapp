@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.css" rel="stylesheet">
+    <style>
+        .show {
+            visibility: hidden;
+            position: fixed;
+            z-index: 999;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .show .panel {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 400px;
+            height: 280px;
+        }
+
+        .show .panel-body {
+            border-bottom: 1px solid #000;
+            text-align: center;
+        }
+
+        .show .btn {
+            margin-left: 20px;
+        }
+
+        .show .panel-heading {
+            position: relative;
+        }
+
+        .show .back {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: inline-block;
+            cursor: pointer;
+            display: block;
+            height: 30px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .inputMsg {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            margin: auto;
+            width: 400px;
+            height: 600px;
+            padding: 20px;
+            background: #ddd;
+            z-index: 99999;
+        }
+
+        .user_sub {
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        .user_canel {
+            margin-left: 40px;
+            margin-top: 20px;
+        }
+
+        .doctor1,
+        .doctor2 {
+            display: inline-block;
+            width: 200px;
+        }
+
+        .doctor1 {
+            margin-right: 10px;
+        }
+        .pay .selectPay{
+            display: inline-block;
+            width: 80px;
+        }
+        .pay{
+            width: 100%;
+        }
+        .pay p{
+            display: block;
+            width: 300px;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="width:900px">
+        <div class="row">
+            <div class="col-sm-12">
+                <table data-toggle="table" id="test_table"></table>
+            </div>
+        </div>
+        <div class="show">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">预约时间段</h3>
+                    <span class="back">X</span>
+                </div>
+                <div class="content">
+                    
+                </div>
+                
+            </div>
+        </div>
+        <div class="panel panel-default inputMsg ">
+            <div class="panel panel-default">
+                <div class="panel-body content1">
+                    <p>
+                        <div class="doctor1">医生姓名：<span class="doctor_name"></span></div>
+                        <div class="doctor2">预约时段：<span class="begin_time"></span>-<span class="end_time">2312</span></div>
+                    </p>
+                    <p>
+                        <div class="doctor1">预约日期：<span class="yy_date"></span></div>
+                        <div class="doctor2">支付金额：<span class="yy_pay"></span></div>
+                    </p>
+                </div>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">姓名</label>
+                    <input type="text" class="form-control user_name" id="exampleInputEmail1" placeholder="姓名">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">电话号码</label>
+                    <input type="text" class="form-control user_phone" id="exampleInputPassword1" placeholder="电话号码">
+                </div>
+                <label for="exampleInputPassword1">证件号</label>
+                <select class="form-control xl user_id">
+                    <option value="1">二代身份证</option>
+                    <option value="2">港澳居民身份证</option>
+                    <option value="3">台湾居民身份证</option>
+                    <option value="4">护照</option>
+                    <option value="5">院内诊疗卡</option>
+                    <option value="6">社保卡</option>
+                    <option value="7">医保卡</option>
+                    <option value="8">区域健康卡</option>
+                </select>
+                <input type="text" class="form-control user_no" placeholder="证件号">
+                <button type="button" class="btn btn-primary user_sub">提交</button>
+                <button type="button" class="btn btn-primary user_canel">取消</button>
+            </form>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+    <script>
+        //        数据格式化函数
+        function doctor_formatter(val, row, i) {
+            //        val:对应数组字段的数据，row：所属行的数据  i:索引
+            console.log(val['parentDeptName'])
+            if (val['parentDeptName'] == undefined) {
+                return ['暂无']
+            }
+            return [
+                '<strong>科室：</strong>' + val['parentDeptName'] || '无',
+                '<strong>科目：</strong>' + val['deptName'] || '无',
+                '<strong>职称：</strong>' + val['doctorIntrodution'] || '无',
+                '<strong>姓名：</strong>' + val['doctorName'] || '无',
+            ].join('<br>');
+        }
+        // 预约
+        function yuy(hisOrd,price) {
+            $('.inputMsg').show();
+            $('.user_canel').on('click', function () {
+                $('.inputMsg').hide();
+                del()
+            })
+            $('.user_sub').unbind('click').on('click', function () {
+                var user_name = $('.user_name').val();
+                var user_id = $('.user_id').val();
+                var user_no = $('.user_no').val();
+                var user_phone = $('.user_phone').val()
+                $('.inputMsg').hide();
+                del();
+                $.ajax({
+                    url: '../rest/register/register',
+                    data: {
+                        hisOrdNum: hisOrd,
+                        cardtype: user_id,
+                        cardNo: user_no,
+                        patName: user_name,
+                        phonenum: user_phone
+                    },
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (msg) {
+                        var str = ''
+                        if (msg.msg != "success") {
+                            $('.content').html('已约人数已超过科室预约限额!');
+                            return;
+                        }
+                        console.log(msg.data)
+                        for (var i in msg.data) {
+                            str += '<p>订单号:' + msg.data[i].hisOrdNum + '</p>';
+                            str += '<p>就诊序号:' + msg.data[i].serialNum + '</p>';
+                            str += '<p>就诊位置:' + msg.data[i].visitPosition + '</p>';
+                            str += '<p>就诊说明:' + msg.data[i].visitDesc || "无" + '</p>';
+                            str += '<button class="nextpay">下一步</button>'
+                        }
+                        $('.content').html(str);
+                        console.log(msg.data[i].hisOrdNum)
+                        payOk(msg.data[i].hisOrdNum,price)
+                    },
+                    error: function () {
+                        alert('error')
+                    }
+                })
+                pay();
+                
+            })
+        }
+        //支付
+        function pay(){
+            var str = "<div class='pay'><p><span class='selectPay'>扫码支付</span><input type='text' class='codePay'></p><p><button class='nextOk'>下一步</button></p></div>"
+            $('.content').on('click','.nextpay',function(){
+                $('.content').html(str)
+                $('.codePay').focus();
+            })
+        }
+        function payOk(ordnum,price){
+            $('.content').unbind('click').on('click','.nextOk',function(){
+                alert(ordnum+'+'+price)
+                /*$.ajax({
+                    url:'../rest/pay/trade_pay',
+                    type:'get',
+                    dataType:'json',
+                    data:{hospNo:'',auth_code:$('.codePay').val(),}
+                })*/
+            })
+        }
+        function del() {
+            $('.user_name').val('');
+            $('.user_phone').val('');
+            $('.user_no').val('');
+            $('.user_id').val('1');
+        }
+        function state_formatter_am(val, row, i) {
+            //        val:对应数组字段的数据，row：所属行的数据  i:索引
+            if (val && val['am'] && val['am'].length > 0) {
+                console.log(val['am']);
+                return '<a href="#" class="reser">预约</a>';
+            } else {
+                return '';
+            }
+        }
+        function state_formatter_pm(val, row, i) {
+            //        val:对应数组字段的数据，row：所属行的数据  i:索引
+            if (val && val['pm'] && val['pm'].length > 0) {
+                console.log(val['pm']);
+                return '<a href="#" class="reser">预约</a>';
+            } else {
+                return '';
+            }
+            return val ? '<a href="#" class="reser">预约</a>' : '';
+        }
+        function order() {
+            window.location.href = "yyxq.html";//预约时弹出框
+        }
+
+        function queryData() {
+            $.ajax({
+                url: '../rest/register/hisorderinfo?deptCode=' + window.location.search.split('=')[1],
+                type: 'get',
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    handelData(data);
+                    show(data);
+                }
+            })
+        }
+        $(function () {
+            queryData();
+            //        handelData(test_data)
+        })
+        //显示排版信息
+        function show(data) {
+            $('.back').on('click', function () {
+                $('.show').css({ "visibility": "hidden" })
+            })
+            $('.reser').on('click', function () {
+                $('.show').css({ "visibility": "visible" })
+                var tableIndex = $(this).parent().parent().attr("data-index")
+                var domIndex = $(this).parent().index()
+                var date = domIndex / 2;
+                if ((domIndex % 2) != 0) {
+                    date = Math.floor(domIndex / 2) + 1;
+                }
+                var flag = 'am';
+                if ((domIndex % 2) == 0) {
+                    flag = 'pm';
+                }
+                var str = '';
+                var msg = data.data[tableIndex].pbiNfo;
+                console.log(date - 1)
+                $('.doctor_name').html(data.data[tableIndex].doctorInfo.doctorName);
+
+                for (var i in msg[date - 1][flag]) {
+                    str += "<div class='panel-body'><span>";
+                    str += msg[date - 1][flag][i].beginTime;
+                    str += "-";
+                    str += msg[date - 1][flag][i].endTime
+                    str += "</span><button onclick='yuy(" + msg[date - 1][flag][i].hisOrdNum + ','+msg[date - 1][flag][i].regFee+")' class='btn yuy'>预约</button></div>"
+                    $('.begin_time').html(msg[date - 1][flag][i].beginTime)
+                    $('.end_time').html(msg[date - 1][flag][i].endTime)
+                    $('.yy_date').html(msg[date - 1][flag][i].scheduleDate)
+                    $('.yy_pay').html(msg[date - 1][flag][i].regFee)
+                }
+                $('.content').html(str)
+            })
+        }
+        function handelData(data) {
+            if (data['msg'] == 'success') {
+                var res = [];
+                data['data'].map(function (val) {
+                    var obj = JSON.parse(JSON.stringify(val));
+                    obj['pbiNfo_day'] = {};
+                    obj['pbiNfo'].map(function (day) {
+                        obj['pbiNfo_day'][day['day']] = day;
+                    });
+                    res.push(obj);
+                })
+                $('#test_table').bootstrapTable('load', res);
+                return res;
+            } else {
+                alert("无数据")
+            }
+        }
+        function addEvent(){
+            
+        }
+        //    从今天开始，生成往后七天列
+        var columns = [[{ 'field': 'doctorInfo', title: '医生名', rowspan: 2, formatter: doctor_formatter },], []];
+        //调整时区，获取今天的时间戳
+        var today = new Date().getTime() / 1000 + 8 * 3600;
+        for (var i = 0; i < 7; i++) {
+            var day = new Date((today + 3600 * 24 * i) * 1000);
+            var day_str = day.getFullYear() + '-' + ((day.getMonth() + 1) + 100 + '').slice(1) + '-' + ((day.getDate()) + 100 + '').slice(1);
+            columns[0].push({
+                title: day_str, colspan: 2,
+            })
+            columns[1].push({
+                'field': 'pbiNfo_day.' + day_str, title: '上午', formatter: state_formatter_am
+            })
+            columns[1].push({
+                'field': 'pbiNfo_day.' + day_str, title: '下午', formatter: state_formatter_pm
+            })
+        }
+        console.log(columns);
+        //    生成表格
+        $('#test_table').bootstrapTable('destroy').bootstrapTable({
+            columns: columns
+        })
+    </script>
+</body>
+
+</html>
