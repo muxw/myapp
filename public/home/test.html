@@ -28,33 +28,19 @@
 </head>
 
 <body>
-    
+    test
 </body>
-<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script>
-    var i = 0;
-    var time = setInterval('setTimeAjax()',1000)
-    function setTimeAjax() {
-            if(i==9){
-                clearInterval(time)
-                return;
-            }
-            $.ajax({
-                url: '/test',
-                type: 'get',
-                dataType: 'json',
-/*                data: { ordnum: ordnum },*/
-                success: function (msg) {
-                    i++;
-                    if (msg.code == 200) {
-                        layer.msg('支付成功')
-                        clearInterval(time)
-                    }else{
-                       console.log(i)
-                    }
-                }
-            })
-        }
+    if (navigator.serviceWorker) {
+      navigator.serviceWorker
+        .register("./sw.js")
+        .then(function (registration) {
+          console.log("service worker 注册成功");
+        })
+        .catch(function (err) {
+          console.log("servcie worker 注册失败");
+        });
+    }
 </script>
 
 </html>
